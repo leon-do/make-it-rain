@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<style>
+		body{
+			margin:0;
+			background-color:#272631;
+		}
+		#container{
+			position: relative;
+			width: 100%;
+			height: 100vh;
+			overflow:hidden;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="container"> </div>
+
+	<script>
+
+		
+		makeItRain(500);
+
+
+
+
+
+		function makeItRain(droplets){
+
+			// list of colors for each droplet
+			var colors = ["#247BA0", "#70C1B3", "#B2DBBF", "#F3FFBD", "#FF1654", "#FDFFFC", "#2EC4B6", "#FF9F1C", "#E71D36", "#E63946", "#F1FAEE", "#A8DADC", "#457B9D", "#1D3557", "#2B2D42", "#8D99AE", "#EDF2F4", "#EF233C", "#D90429", "#6699CC", "#FFF275","#FF8C42","#FF3C38","#A23E48","#1A535C","#4ECDC4","#F7FFF7","#FF6B6B","#FFE66D", "#06AED5", "#086788", "#F0C808", "#FFF1D0", "#DD1C1A"]
+
+
+			for (var i = 0; i < droplets; i++){
+				$("#container").append("<div id=rain" + i + "> </div>")
+
+			
+		
+				// generate random values
+				var randomTop = generateRandom(5,500);
+				var randomLeft = generateRandom(0,100);
+				var randomWidth = generateRandom(15,20);
+				var randomHeight = generateRandom(15,20);
+				var randomSpeed = generateRandom(10000,20000);
+				var randomBackgroundColor = colors[generateRandom(0,colors.length)];
+		
+
+				// stylize droplets
+				$("#rain"+i).css({
+					"position":"absolute",
+					"top": -1 * randomTop + "px",
+					"left": randomLeft + "%",
+					"width":randomWidth + "px",
+					"height":randomHeight + "px",
+					"background-color":randomBackgroundColor
+				});
+
+
+				// animate
+				$("#rain"+i).animate({
+					"top":"150%"
+					},randomSpeed, function(){
+						//loop back around
+					});
+
+
+
+			} //for loop
+
+		} //makeItRain
+
+
+
+
+
+
+
+		function generateRandom(min,max){
+			// generates a random number between min and max
+			var RandomNumber = Math.floor(Math.random()*(max - min) + min)
+			return RandomNumber
+		}
+
+
+
+	</script>
+</body>
+</html>
+
+
+
+
