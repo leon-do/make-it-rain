@@ -24,13 +24,14 @@
 
 	<script>
 
-		
+		// makes 500 droplets aka squares
 		makeDroplets(500);
 
 		function makeDroplets(droplets){
 			for (var i = 0; i < droplets; i++){
 				$("#container").append("<div id=rain" + i + "> </div>")
 
+				// this function styles and animates the square
 				makeItRain("rain" + i)
 			}
 		}
@@ -66,7 +67,7 @@
 			$("#"+id).animate({
 				"top":"100%"
 				},randomSpeed,function(){
-					console.log($(this).attr("id")) // returns rain120
+					// calls the function when a this droplet is done animating
 					makeItRain($(this).attr("id"))
 				})
 
